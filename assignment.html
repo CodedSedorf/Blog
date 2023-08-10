@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid bg-success w-50 my-5">
+        <h1 class="headings text-center">SIGN UP</h1>
+    
+            <input type="Enter your email" placeholder="Enter your email" class="email bg-light w-50 my-2 mx-2" required id="input1">
+            <input type="Enter password" placeholder="Enter password" class="pass bg-light w-50 my-2 mx-2" required id="input2">
+            <input type="Confirm password" placeholder="confirm password" class="pass bg-light w-50 my-2 mx-2" required id="input3"> <br>
+            <span><button class="btn btn-dark mx-5 my-3" onclick="toObject()">SignUp</button></span>
+    </div>
+
+    
+</body>
+<script>
+    let arr1 = "";
+        let arr2 = "";
+        
+
+    function toObject(){
+        window.location.href="login.html"
+    }
+    
+
+    function toObject(){
+        let input1 = document.getElementById("input1");
+        let input2 = document.getElementById("input2");
+        let input3 = document.getElementById("input3");
+
+        if (input1.value.endsWith("@gmail.com")){
+            console.log(input1)
+        } else{
+            alert("You have entered an invalid mail")
+        }
+        
+        if (input2.value !== input3.value){
+            alert("password doesn't match")
+        }
+        
+
+        window.location.href="login.html"
+    }
+
+
+
+</script>
+</html>

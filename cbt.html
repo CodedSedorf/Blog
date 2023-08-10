@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+        <div class="container w-50 bg-primary">
+            <h3 id="ques" class="fav text-center"></h3>
+            <label for="Options" class="lab text-center"></label>
+                <input type="radio" name="tag"> <b id="rad1"></b> <br>
+                <input type="radio" name="tag"> <b id="rad2"></b> <br>
+                <input type="radio" name="tag"> <b id="rad3"></b> <br>
+                <input type="radio" name="tag"> <b id="rad4"></b>
+            </label> <br>
+            <div class="container d-flex justify-content-between">
+                <button class="btn btn-warning w-25 my-3" onclick="previous()">Previous</button>
+                <button class="btn btn-light w-25 my-3" onclick="next()">Next</button>
+            </div>
+
+        </div>
+    
+    <div class="cot"></div>
+    <br>
+    <br>
+    <br>
+    <div id="show"></div>
+    <button onclick="nextt()">Next</button>
+    <button onclick="mine()">Previous</button>
+    
+</body>
+<script>
+    let cbt = [
+        {
+            question: "1. What is your favourite food",
+            option: ["Rice", "Beans", "Yam", "Spag"]
+        },
+        {
+            question: "2. What is your favourite color",
+            option: ["Blue", "Red", "Yellow", "Blact"] 
+        },
+        {
+            question: "3. What is the current programming language?",
+            option: ["Python", "JavaScript", "PHP", "Java"]
+        },
+        {
+            question: "4. Who is the highest paid footballer in the whole world?",
+            option: ["Messi", "Ronaldo", "Mbape", "Neymar"]
+        },
+        {
+            question: "5. Who is currently the goat?",
+            option: ["C. Ronaldo", "Messi", "Halland", ""]
+        }
+    ]
+
+    let index = 0;
+    let ques = document.getElementById("ques");
+    let rad1 = document.getElementById("rad1");
+    let rad2 = document.getElementById("rad2");
+    let rad3 = document.getElementById("rad3");
+    let rad4 = document.getElementById("rad4");
+
+
+    ques.innerHTML = `${cbt[0].question}`
+    rad1.innerHTML = `${cbt[0].option[0]}`
+    rad2.innerHTML = `${cbt[0].option[1]}`
+    rad3.innerHTML = `${cbt[0].option[2]}`
+    rad4.innerHTML = `${cbt[0].option[3]}`
+    
+
+    function next(){
+        index++
+        ques.innerHTML = `${cbt[index].question}`
+        rad1.innerHTML = `${cbt[index].option[0]}`
+        rad2.innerHTML = `${cbt[index].option[1]}`
+        rad3.innerHTML = `${cbt[index].option[2]}`
+        rad4.innerHTML = `${cbt[index].option[3]}`
+        
+    }
+
+    
+    function previous(){
+        index--
+        ques.innerHTML = `${cbt[0].question}`
+        rad1.innerHTML = `${cbt[0].option[0]}`
+        rad2.innerHTML = `${cbt[0].option[1]}`
+        rad3.innerHTML = `${cbt[0].option[2]}`
+        rad4.innerHTML = `${cbt[0].option[3]}`
+    }
+    
+    
+    
+    // function next(){
+    //     ques.innerHTML = cbt[question]
+    // }
+
+
+
+    // let text = ["Java Script is a scripting language", "Css is used to style the html page"]
+
+    // let texts = [{info:"1. Java Script is a scripting language"}, {info:"2. Css is used to style the html page"}]
+    // let show = document.getElementById("show");
+    // let index = 0;
+    // show.innerHTML = texts[index].info;
+
+
+    // function nextt(){
+    //     index++
+    //     show.innerHTML = texts[index].info;
+    // }
+
+    // function mine(){
+    //     index--
+    //     show.innerHTML = texts[index].info;
+    
+
+
+
+    // // function Me(){
+    // //     // show.innerHTML = text[0]
+    // //     show.innerHTML = this.
+    // // }
+
+    // function me(){
+    //     index++
+    //     show.innerHTML = texts[index].info
+    // }
+
+    // function mine() {
+    //     index--
+    //     show.innerHTML = texts[index].info
+    // }
+</script>
+</html>

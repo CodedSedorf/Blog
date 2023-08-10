@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>hobbies</th>
+
+            </tr>
+        </thead>
+    </table>
+
+    <tbody id="tbody">
+
+    </tbody>
+
+    
+        <button onclick="minus()">-</button>
+        <span id="fig">0</span>
+        <button onclick="plus()">+</button>
+        <br>
+        <br>
+        <br>
+            <button class="btn-danger" onclick="previous()">Previous</button>
+            <img id="dispImg" alt="">
+            <button class="btn-danger" onclick="next()">Next</button>
+    
+
+    
+</body>
+
+<script>
+    let index = 1;
+    fig.innerHTML = index;
+
+    function plus(){
+        fig.innerHTML = index;
+        if(index <= 9){
+            index++
+
+    }
+}
+
+    function minus(){
+        fig.innerHTML = index;
+        if(index >= 1){
+            index--
+
+    }
+        
+    }
+
+
+
+    let tbody = document.getElementById("tbody");
+
+
+let info = {
+    name: "Daniel",
+    age: 3,
+    class: "HTML",
+    hobbies: ["Swimming", "singing", "Sleeping", "Eating",]
+}
+
+// tbody.innerHTML = `
+// <tbody>
+//     <td>${info.age}</td>
+//     <td>${info.age}</td>
+//     <td>${info.class}</td>
+//     <td>${info.hobbies}</td>
+// </tbody>
+// `
+let dispImg = document.getElementById("dispImg");
+let img = ["IMG_7504.JPG", "IMG_7593.JPG", "IMG_7597.JPG"];
+dispImg.scr = img[0];
+let currentIndex = 0;
+
+function next(){
+    currentIndex = (currentIndex + 1) % img.length;
+    console.log(currentIndex);
+    dispImg.src = img[currentIndex];
+}
+
+
+</script>
+</html>

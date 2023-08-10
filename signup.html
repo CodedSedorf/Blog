@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+      h1{
+    color: cadetblue;
+    text-align: center;
+}
+form{
+    border: 1px solid cadetblue;
+    width: 50%;
+    padding: 20px;
+    border-color: aquamarine;
+    background-size: auto;
+    background-image: none;
+}
+div{
+    margin-bottom: 10px;
+}
+input{
+    width: 60%;
+    height: 25px;
+}
+button{
+    background-color: cadetblue;
+    border: none;
+    width: fit-content;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    border-radius: 5px;
+}
+a{color: azure;  
+}
+h2{
+    color: cadetblue;
+    text-align: center; 
+}
+#intro{
+    font-style: italic;
+}
+.linpopo{
+    font-style: normal;
+} 
+</style>
+<body>
+    <h1>SIGN UP PAGE</h1>
+    <form>
+     <div id="signup-form">
+        <label for="Name">name</label>
+        <input type="text" name="Name" required placeholder="Name" id="name">
+        <br>
+        <br>
+        <label for="Age">Age</label>
+        <input type="text" name="Age" required placeholder="Age" id="age">
+        <br>
+        <br>
+         <label for="Email and Username" >Email and Username</label>
+     <br>
+     <br>
+     <input type="text" name="Email" required placeholder="Email" id="email">
+     </div>
+ 
+     <div>
+         <label for="Password">Password</label>
+             <br>
+             <input type="Password" name="Password" required placeholder="Password" id="password">
+              <br>
+             <label for="Confirm Password">Confirm Password</label>
+             <br>
+             <input type="Password" name="Password" required placeholder="Password" id="password">
+     </div>
+     </div>
+ 
+     <div>
+         
+         <span><button onclick="toObject()">SIGN UP</button></span>
+     </div>
+    </form>
+</body>
+<Script>
+    function toObject(){
+    window.location.href = "login.html"
+
+    function signup() {
+      const name = document.getElementById("name")  
+      const Age = document.getElementById("age")  
+      const Email = document.getElementById('Email').value;
+      const password = document.getElementById('password').value;
+
+}
+
+if (Email && password) {
+        localStorage.setItem(email, password);
+        alert('Signup successful! Please login.');
+        document.getElementById('username').value = '';
+        document.getElementById('password').value = '';
+      } else {
+        alert('Please fill in both Email and password.');
+      }
+    }
+
+    
+</Script>
+</html>

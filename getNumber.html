@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid card bg-primary">
+        <h1 class="text-center ">Guessing Game</h1>
+        <input class="goat w-50 my-3 mx-3 py-2 px-2 bg-success" type="text" placeholder="Enter a number" id="goat">
+        <div class="btn btn-danger w-25 my-3 mx-3 px-2 py-2" onclick="goat1()">Check Number</div>
+    </div>
+    <hr>
+    <br>
+
+    <div class="container-fluid bg-info w-50">
+        <h1 class="text-center my-3 mx-3 py-2 px-2">RECHARGE CARD SYSTEM</h1>
+        <label for="" class="label color-success mx-2">Select Network</label>
+        <select name="Network" id="Network">
+            <option value="MTN">MTN</option>
+            <option value="GLO">GLO</option>
+            <option value="AIRTEL">AIRTEL</option>
+            <option value="9MOBILE">9MOBILE</option>
+        </select>
+        <label for="" class="label color-success mx-2">Select Amount</label>
+        <select name="" id="Amount">
+            <option value="100">100</option>
+            <option value="200">200</option>
+            <option value="500">500</option>
+            <option value="1000">1000</option>
+        </select>
+        <div class="btn btn-danger rounded my-1 mx-5 py-2 px-2" onclick="generate()">Generate Airtime</div>
+        <h2 class="text-center">Load Airtime</h2>
+        <label for="for MTN">For MTN</label>
+        <input type="text" placeholder="Enter Pin"  class="input bg-warning w-50 mx-3 " id="cardPin">
+        <div class="btn btn-dark my-2 rounded" onclick="loadMTN()">Load Aiirtime</div> <br>
+        <label for="for GLO">For GLO</label>
+        <input type="text" placeholder="Enter Pin" class="input bg-success w-50 mx-3" id="cardDigit">
+        <div class="btn btn-dark my-2 rounded" onclick="loadGLO()">Load Aiirtime</div> <br>
+        <label for="for AIRTEL">For AIRTEL</label>
+        <input type="text" placeholder="Enter Pin" class="input bg-danger w-50 mx-3" id="cardPins">
+        <div class="btn btn-dark my-2 rounded" onclick="loadAIRTEL()">Load Aiirtime</div>  <br>
+        <label for="for 9MOBILE">For 9MOBILE</label>
+        <input type="text" placeholder="Enter Pin" class="input bg-primary w-50 mx-3" id="cardDigits">
+        <div class="btn btn-dark my-2 rounded" onclick="load9MOBILE()">Load Aiirtime</div> <br>
+    </div>
+
+    <br>
+    <br>
+    
+    
+</body>
+<script>
+    let amount = document.getElementById("Amount");
+    let network = document.getElementById("Network"); 
+    let cardPin = document.getElementById("cardPin");
+    let cardPins = document.getElementById("cardPins");
+    let str1 = "*555*"
+    let str2 = "#"
+    let randNum = Math.floor(Math.random() * 1000000000000000);
+    const genePin = `*555*${randNum}#`;
+    const cardDigit = document.getElementById("cardDigit");
+    const cardDigits = document.getElementById("cardDigits")
+    const glo = `*123*${randNum}#`;
+    const airtel = `*126*${randNum}#`;
+    let etis = `*311*${randNum}#`;
+
+    function generate(){
+        console.log(network.value, Network);
+        console.log(amount.value, "Amount");
+        console.log(randNum);
+    }
+
+    function loadMTN(){
+        
+        if (cardPin.value === genePin){
+            alert(`Congratulations! Your account recharge of ${amount.value}  is successful`)
+        } else{
+            alert("invalid pin, please try again or contact the customer service.")
+        }
+        
+    }
+    function loadGLO(){
+        if (cardDigit.value === glo) {
+            alert(`Congratulations! Your account recharge of ${amount.value}  is successful`)
+        } else{
+            alert("invalid pin, please try again or contact the customer service.")
+        }
+    }
+    function loadAIRTEL(){
+        if (cardPins.value === airtel){
+            alert(`Congratulations! Your account recharge of ${amount.value}  is successful`)
+        } else{
+            alert("invalid pin, please try again or contact the customer service.")
+        }
+
+        }
+        
+    function load9MOBILE(){
+        if (cardDigits.value === etis){
+            alert(`Congratulations! Your account recharge of ${amount.value}  is successful`)
+        } else{
+            alert("invalid pin, please try again or contact the customer service.")
+        }
+
+    }
+
+
+
+    
+        // if (cardPin.value == randNum.startsWith("str1") + randNum.endsWith("str2")){
+        //     alert("Your recharge of" `${amount.value}` + " is successful")
+        // }
+        // else{
+        //     alert("invalid pin, please try again or contact the customer service.")
+        // }
+        
+    //
+    let num = Math.floor(Math.random() * 10);
+    console.log(num)
+
+    let goat = document.getElementById("goat");
+
+    function goat1(){
+        
+        if (goat.value == num) {
+            alert("You are amazing for guessing right")
+        } 
+        else{
+            alert("Sorry! You are wrong this time, try once more.")
+        }
+    }
+
+
+    // let str = "Hello, World"; 
+    // console.log(str.startsWith("Hello"))
+    // console.log(str.startsWith("World"))
+
+
+</script>
+</html>

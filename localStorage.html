@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    val1 = "Hello world"
+    localStorage.setItem("maranatha", val1)
+
+    newVal = localStorage.getItem("maranatha")
+    console.log(newVal)
+
+
+
+    myArr = ["Hey", 70, 20]
+
+    localStorage.setItem("myArr", JSON.stringify(myArr))
+
+    newARR = JSON.parse(localStorage.getItem("myArr"))
+    console.log(newARR)
+
+    localStorage.removeItem("myArr")
+    localStorage.clear()
+</script>
+</html>
