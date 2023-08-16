@@ -8,13 +8,15 @@
 </head>
 <body>
         <div class="container w-50 bg-primary">
+            <h1 class="head text-center">CBT EXAM</h1>
             <h3 id="ques" class="fav text-center"></h3>
-            <label for="Options" class="lab text-center"></label>
+            <!-- <label for="Options" class="lab text-center"></label>
                 <input type="radio" name="tag"> <b id="rad1"></b> <br>
                 <input type="radio" name="tag"> <b id="rad2"></b> <br>
                 <input type="radio" name="tag"> <b id="rad3"></b> <br>
                 <input type="radio" name="tag"> <b id="rad4"></b>
-            </label> <br>
+            </label> <br> -->
+            <div id="quest"></div>
             <div class="container d-flex justify-content-between">
                 <button class="btn btn-warning w-25 my-3" onclick="previous()">Previous</button>
                 <button class="btn btn-light w-25 my-3" onclick="next()">Next</button>
@@ -22,13 +24,13 @@
 
         </div>
     
-    <div class="cot"></div>
-    <br>
-    <br>
-    <br>
-    <div id="show"></div>
-    <button onclick="nextt()">Next</button>
-    <button onclick="mine()">Previous</button>
+        <div class="cot"></div>
+        <br>
+        <br>
+        <br>
+        <div id="show"></div>
+        <button onclick="nextt()">Next</button>
+        <button onclick="mine()">Previous</button>
     
 </body>
 <script>
@@ -61,34 +63,75 @@
     let rad2 = document.getElementById("rad2");
     let rad3 = document.getElementById("rad3");
     let rad4 = document.getElementById("rad4");
+    let quest = document.getElementById("quest")
+
+    // for (i=0; i < index; i++){
+        
+    // }
+
+    quest.innerHTML = `
+        <div> ${cbt[index].question}</div>
+        `
+        for (i=0; i < cbt[index].option.length; i++){
+            quest.innerHTML += `
+            <div>
+                <input type="radio" name="question">
+                <span>${cbt[index].option[i]} </span>    
+            </div>
+            `
+        }
 
 
-    ques.innerHTML = `${cbt[0].question}`
-    rad1.innerHTML = `${cbt[0].option[0]}`
-    rad2.innerHTML = `${cbt[0].option[1]}`
-    rad3.innerHTML = `${cbt[0].option[2]}`
-    rad4.innerHTML = `${cbt[0].option[3]}`
+    // ques.innerHTML = `${cbt[0].question}`
+    // rad1.innerHTML = `${cbt[0].option[0]}`
+    // rad2.innerHTML = `${cbt[0].option[1]}`
+    // rad3.innerHTML = `${cbt[0].option[2]}`
+    // rad4.innerHTML = `${cbt[0].option[3]}`
     
 
     function next(){
-        index++
-        ques.innerHTML = `${cbt[index].question}`
-        rad1.innerHTML = `${cbt[index].option[0]}`
-        rad2.innerHTML = `${cbt[index].option[1]}`
-        rad3.innerHTML = `${cbt[index].option[2]}`
-        rad4.innerHTML = `${cbt[index].option[3]}`
+        // ques.innerHTML = `${cbt[index].question}`
+        // rad1.innerHTML = `${cbt[index].option[0]}`
+        // rad2.innerHTML = `${cbt[index].option[1]}`
+        // rad3.innerHTML = `${cbt[index].option[2]}`
+        // rad4.innerHTML = `${cbt[index].option[3]}`
+        if (index < cbt.length - 1){
+            index++
+            quest.innerHTML = `
+            <div> ${cbt[index].question}</div>
+            `
+            for (i=0; i < cbt[index].option.length; i++){
+                quest.innerHTML += `
+                <div>
+                    <input type="radio" name="question">
+                    <span>${cbt[index].option[i]} </span>    
+                </div>
+                `
+            }
+        }
+       
         
+    }
+    function previous(){
+        if (index === 1){
+            index--
+            quest.innerHTML = `
+            <div> ${cbt[index].question}</div>
+            `
+            
+            
+        }
     }
 
     
-    function previous(){
-        index--
-        ques.innerHTML = `${cbt[0].question}`
-        rad1.innerHTML = `${cbt[0].option[0]}`
-        rad2.innerHTML = `${cbt[0].option[1]}`
-        rad3.innerHTML = `${cbt[0].option[2]}`
-        rad4.innerHTML = `${cbt[0].option[3]}`
-    }
+    // function previous(){
+    //     index--
+    //     ques.innerHTML = `${cbt[index].question}`
+    //     rad1.innerHTML = `${cbt[index].option[0]}`
+    //     rad2.innerHTML = `${cbt[index].option[1]}`
+    //     rad3.innerHTML = `${cbt[index].option[2]}`
+    //     rad4.innerHTML = `${cbt[index].option[3]}`
+    // }
     
     
     

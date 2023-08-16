@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        @keyframes changeBackground{
+            0% {background-color: #388d80;}
+            20% {background-color: #e698a1;}
+            40% {background-color: #6438b0;}
+            60% {background-color: #4381d191;}
+            80% {background-color: #b0c3d4;}
+            100% {background-color: rebeccapurple;}
+
+        }
+        body {
+            background-color: #388d80;
+            animation-name: changeBackground;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+        <main class="container-fluid">
+            <div id="screen"></div>
+            <div class="btn btn-secondary mx-3 rounded" onclick="prevQues()">Prev</div>
+            <div class="btn btn-secondary mx-3 rounded" onclick="next()">Next</div>
+            <div class="btn btn-primary mx-3 rounded" onclick="submitTest()">Submit</div>
+        </main>
+        <p id="score"></p>
+    </body>
+    <script>
+
+        let scren = document.getElementById("screen");
+        let index = 0;
+        let score = 0;
+
+
+
+        let cbt = [
+        {
+            question: " What is your favourite food",
+            option: ["Rice", "Beans", "Yam", "Spag"], 
+            answer: "yam"
+        },
+        {
+            question: " What is your favourite color",
+            option: ["Blue", "Red", "Yellow", "Black"],
+            answer: "Blue"
+        },
+        {
+            question: " What is the current programming language?",
+            option: ["Python", "JavaScript", "PHP", "Java"],
+            answer: "JavaScript"
+        },
+        {
+            question: " Who is the highest paid footballer in the whole world?",
+            option: ["Messi", "Ronaldo", "Mbape", "Neymar"],
+            answer: "Mbape"
+        },
+        {
+            question: " Who is currently the goat?",
+            option: ["C. Ronaldo", "Messi", "Halland", ""],
+            answer: "C. Ronaldo"
+        }
+    ]
+    // console.log(cbt[0].answer)
+
+    function displayQue(){
+        scren.innerHTML = `<h1>${index+1}.${cbt[index].question}</h1>`
+        cbt[index].option.forEach(element => {
+            scren.innerHTML += `
+            <input name="same${index}" value="${element}" onchange="pickAns(event)" type="radio">
+            <span>${element}</span> <br />
+            `
+        });
+    }
+    displayQue()
+        function pickAns(ev){
+            console.log(ev.target.value)
+        }
+
+    function next(){
+        index++
+        displayQue()
+    }
+    function prevQues(){
+        index--
+        displayQue()
+    }
+    function pickAns(ev){
+            let selectedAnswer = ev.target.value;
+            if (selectedAnswer.toLowerCase() === cbt[index].answer.toLowerCase()) {
+                score++; 
+            }
+        }
+
+        function submitTest() {
+            const percentageScore = (score / cbt.length) * 100;
+            document.getElementById("score").textContent = `You have successfully submitted your exam, your score is: ${percentageScore.toFixed(2)}%`;
+        }
+
+    </script>
+</html>

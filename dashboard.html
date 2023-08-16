@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/fc424c97f4.js" crossorigin="anonymous"></script>
+    
+    <style>
+        body {
+            background-color: #388d80;
+            background-image: url(https://img.freepik.com/free-photo/fun-3d-illustration-cartoon-kid-with-vr-helmet_183364-81193.jpg?size=626&ext=jpg&ga=GA1.2.442430260.1689080030&semt=sph);
+        }
+        @keyframes text-colour{
+            0% {background-color: #388d80;}
+            20% {background-color: #e698a1;}
+            40% {background-color: #6438b0;}
+            60% {background-color: #4381d191;}
+            80% {background-color: #b0c3d4;}
+            100% {background-color: #1e1720;}
+        }
+        #sedorf {
+            background-color: #388d80;
+            animation-name: text-colour;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid bg-primary d-flex justify-content-between py-3">
+            <i class="fa-brands fa-blogger" style="color: white;">&nbsp&nbspBlogger</i>
+            <button class="btn btn-danger" onclick="logout()">Logout</button></i>
+        
+    </div>
+    
+    <div class="container text-center">
+        <h1 >Welcome back <span id="username"></span></h1>
+        <p></p>
+        <button class="btn" onclick="postBlog()">post blog</button>
+        <button class="btn" onclick="viewBlog()">view all blog</button>
+        <button class="btn" onclick="likeBlog()">view liked blog</button>
+        <div id="postBlogs" class="container container-fluid  w-50" style="">
+            <input type="text" placeholder="title" id="title" class="w-100">
+            <textarea class="bg-dark text-light w-100" name="" id="textarea" cols="30" rows="10" placeholder="content" itemid="textarea"></textarea>
+            <button class="btn btn-success w-25 my-2" onclick="submit()"> submit</button>
+            <button class="btn btn-dark w-25 my-2" >clear</button>
+        </div>
+        <div id="viewBlogs" class="container container-fluid card w-50" style="display: none;">Sedorf</div>
+        <div id="likedBlogs" class="container container-fluid card w-50" style="display: none;">Sammy</div>
+    </div>
+</body>
+
+<script>
+    let date = new Date();
+    console.log(date)
+    console.log(date.getDate())
+    console.log(date.getMinutes())
+    console.log(date.getHours())
+    console.log(date.toLocaleString())
+    console.log(date.getDay())
+    console.log(date.toLocaleTimeString());
+
+    let postBlogs = document.getElementById("postBlogs");
+    let title = document.getElementById("title");
+    let textarea = document.getElementById("textarea");
+    let username = document.getElementById("username");
+    let viewBlogs = document.getElementById("viewBlogs");
+    let likeBlogs = document.getElementById("likeBlogs");
+    let currentUser = JSON.parse(localStorage.getItem("signInData"))
+    let dashboard = JSON.parse(localStorage.getItem("dashboard")) || []
+
+   
+    username.innerHTML = currentUser.username
+
+    function submit(){
+        
+
+        let taiwo = {
+            title: title.value,
+            textarea: textarea.value,
+            author: currentUser.username,
+            time: new Date().toLocaleString()
+        }
+        if (title.value === "" || textarea.value === ""){
+            alert("please write a blog")
+        }else {
+            dashboard.push(taiwo)
+            title.value = ""
+            textarea.value = ""
+            viewBlogs.style.display = "block";
+            postBlogs.style.display = "none";
+            viewBlog()
+        }
+    }
+    function viewBlog(){
+        viewBlogs.innerHTML = ""
+        viewBlogs.style.display = "block";
+        postBlogs.style.display = "none"
+        for (let index = 0; index < dashboard.length; index++)
+        viewBlogs.innerHTML += `
+            <div>
+                <h1>${dashboard[index].title}</h1>
+                <p>${dashboard[index].textarea}</p>
+                <p>author: ${dashboard[index].author}</p>
+                <p>${dashboard[index].time}</p>
+                <button class="btn btn-primary rounded" onclick="like(${index})">${dashboard[index].liked ? 'Liked' : 'Like'}</button>
+                <button class="btn btn-danger" onclick="unlike(${index})">Unlike</button>
+                <button class="btn btn-danger" onclick="deleteBlog(${index})">Delete</button>
+                
+            </div>
+        `
+
+    }
+    function postBlog(){
+        postBlogs.style.display = "block"
+        viewBlogs.style.display = "none";
+        // likeBlogs.style.display = "none"
+        
+
+    }
+
+    function like(index) {
+    if (!dashboard[index].liked) {
+        dashboard[index].liked = true;
+        viewBlog(); 
+    }
+}
+    function unlike(index) {
+    if (dashboard[index].liked) {
+        dashboard[index].liked = false;
+        viewBlog();
+    }
+}
+    function deleteBlog(index) {
+    if (confirm("Are you sure you want to delete this blog?")) {
+        dashboard.splice(index, 1);
+        viewBlog();
+    }
+}
+
+
+    function logout(){
+        localStorage.removeItem("currentUser");
+        window.location.href = "login.html"
+    }
+
+</script>
+</html>

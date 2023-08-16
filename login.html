@@ -5,16 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+        @keyframes changeBackground{
+            0% {background-color: #388d80;}
+            20% {background-color: #e698a1;}
+            40% {background-color: #6438b0;}
+            60% {background-color: #4381d191;}
+            80% {background-color: #b0c3d4;}
+            100% {background-color: #1e1720;}
+
+        }
+        body {
+            background-color: #388d80;
+            animation-name: changeBackground;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes backgroundImage{
+            25% {background-image: url(images.jfif);}
+            50% {background-image: url(images.png);}
+           
+        }
+        #sedorf{
+            background-image: url(https://img.freepik.com/free-photo/cat-is-sitting-front-cup-popcorn-drink-that-says-june-it_1340-32022.jpg?size=626&ext=jpg&ga=GA1.2.442430260.1689080030&semt=sph);
+            animation-name: backgroundImagge;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+
+        }
+    </style>
+    
 </head>
 <body>
-    <div class="container-fluid bg-success w-50 my-5">
-        <h1 class="headings text-center">SIGN In</h1>
+    <div class="container-fluid bg-success w-50 my-5" id="sedorf">
+        <form action="">
+            <h1 class="headings text-center">SIGN In</h1>
     
-            <input type="Enter your email" placeholder="Enter your email" class="email bg-light w-50 my-2 mx-2" required id="input1">
-            <input type="Enter password" placeholder="Enter password" class="pass bg-light w-50 my-2 mx-2" required id="input2">
-            <br>
-            <button class="btn btn-dark mx-5 my-3" onclick="submitMe()">Sign In</button>
+            <input type="Enter your email" placeholder="Enter your email" class="email bg-light w-50 my-2 mx-2" required id="email">
+            <input type="Enter password" placeholder="Enter password" class="pass bg-light w-50 my-2 mx-2" required id="password">
+        </form>
+            <button class="btn btn-dark mx-5 my-3" onclick="submitMe(event)">Sign In</button>
     </div>
     
 </body>
+<script>
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let signUpData = JSON.parse(localStorage.getItem("signUpData"))
+    console.log(signUpData);
+    let arr1 = [];
+
+    function submitMe(){
+        // ev.preventDefault();
+        let found = signUpData.find((f)=> f.email == email.value && f.password == password.value)
+        if (email.value == "" && password.value == ""){
+            alert("input field cannot be empty")
+        }else if (found == undefined){
+            console.log(found)
+            alert("User not found, please create an account to have access.")
+        }else{
+            
+            alert("Login Successful👍👍👍");
+            localStorage.setItem("signInData", JSON.stringify(found))
+            window.location.href = "dashboard.html"
+        }
+
+    }
+</script>
 </html>

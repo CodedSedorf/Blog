@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/fc424c97f4.js" crossorigin="anonymous"></script>
+    <style>
+        @keyframes changeBackground{
+            0% {background-color: #388d80;}
+            20% {background-color: #e698a1;}
+            40% {background-color: #6438b0;}
+            60% {background-color: #4381d191;}
+            80% {background-color: #b0c3d4;}
+            100% {background-color: #1e1720;}
+
+        }
+        body {
+            background-color: #388d80;
+            animation-name: changeBackground;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes backgroundImage{
+            25% {background-image: url(images.jfif);}
+            50% {background-image: url(ihttps://img.freepik.com/free-photo/fun-3d-illustration-cartoon-kid-with-vr-helmet_183364-81193.jpg?size=626&ext=jpg&ga=GA1.2.442430260.1689080030&semt=sph);}
+            75% {background-image: url(download\ \(8\).jfif);}
+            100% {background-image: url(download\ \(6\).jfif);}
+        }
+        #sedorf{
+            background-image: url(images.jfif);
+            animation-name: backgroundImagge;
+            animation-duration: 30s;
+            animation-iteration-count: infinite;
+
+        }
+        /* @keyframes slideInLeft {
+            from{
+                transform: translateY(-300px);
+                background-color: white;
+            }
+            to {
+                transform: translateY(0);
+                background-color: rebeccapurple;
+            }
+        }
+        .btn{
+            animation: slideInLeft 1s linear 1s infinite normal both;
+            transform: translateY(-1000px);
+        } */
+    </style>
+</head>
+<body>
+    <div class="container-fluid bg-primary d-flex justify-content-between py-3">
+        <i class="fa-brands fa-blogger" style="color: white;">&nbsp&nbspBlogger</i>
+        <i class="fa-solid fa-user-plus" style="color: white;">&nbsp&nbspSign-Up</i>
+    
+    </div>
+    <div class="container-fluid bg-primary w-50 my-5" id="sedorf">
+        <h1 class="headings text-center text-light">SIGN UP</h1>
+        <form action="">
+            <input type="Username" placeholder="Username" class="email bg-light w-50 my-2 mx-2" required id="username">
+            <input type="Enter your email" placeholder="Enter your email" class="email bg-light w-50 my-2 mx-2" required id="email">
+            <input type="Enter password" placeholder="Enter password" class="pass bg-light w-50 my-2 mx-2" required id="password">
+            <input type="Confirm password" placeholder="confirm password" class="pass bg-light w-50 my-2 mx-2" required id="cpassword"> <br>
+        </form>
+        <button class="btn btn-dark mx-5 my-3 text-dark bg-light" onclick="signUp(event)">SignUp</button>
+    </div>
+
+    
+</body>
+<script>
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let cpassword = document.getElementById("cpassword");
+    let allUser = JSON.parse(localStorage.getItem("signUpData")) || [];
+
+    function signUp(){
+        // ev.preventDevault();
+        let data = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        }
+        if(username.value == "" || email.value == "" || password.value == ""){
+            alert("Input field cannot be empty")
+        }else if (password.value !== cpassword.value){
+            alert("Password doesn't match.")
+        }else {
+            allUser.push(data);
+            alert("SIgn-Up is successful");
+            localStorage.setItem("signUpData", JSON.stringify(allUser));
+            window.location.href = "login.html";
+        }
+    }
+
+    //allUser.push(data)
+    //alert("Congratulations👏✔! Signup successful.");
+           // window.location.href = "login.html"
+            //localStorage.setItem("registration", JSON.stringify(allUser))
+
+
+
+    
+</script>
+</html>

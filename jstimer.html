@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp" placeholder="set hour">
+    <input type="text" id="inp2" placeholder="set minute">
+    <button onclick="setAlarm()">Set Alarm</button>
+    <audio src="Davido-Ft-Focalistic-Champion-Sound-(TrendyBeatz.com).mp3" id="audio"></audio>
+</body>
+<script>
+    // let date = new Date()
+    // console.log(date.getDate())
+    // console.log(date.getSeconds())
+    // console.log(date.getMinutes())
+    // console.log(date.toLocaleDateString())
+
+    // setInterval(() => {
+    //     date = new Date()
+    //     console.log(date.getSeconds())
+    //     console.log("Hey")
+    // }, 3000);
+
+    // setTimeout(() => {
+    //     console.log("I will run only once")
+    // }, 2000);
+
+    inp = document.getElementById("inp")
+    inp2 = document.getElementById("inp2")
+    audio = document.getElementById("audio")
+    
+
+    function setAlarm(){
+        inpVal = inp.value
+        inp2Val = inp2.value
+        setInterval(() => {
+            let date = new Date()
+            if (inpVal == date.getHours() && inp2Val == date.getMinutes()){
+                audio.play()
+            }
+            else{
+                audio.pause()
+            }
+        }, 1000);
+    }
+</script>
+</html>
